@@ -10,7 +10,7 @@ config:
     commands:
       - cd .coderoad && npm install
   repo:
-    uri: https://github.com/shmck/
+    uri: https://github.com/shmck/tutorial-saucectl-cypress-test
     branch: v0.1.0
   dependencies:
     - name: node
@@ -22,5 +22,57 @@ levels:
   - id: '1'
   - id: '2'
     steps:
-      files:
-        - README.md
+      - id: '2.1'
+        setup:
+          files:
+            - cypress.json
+        solution:
+          files:
+            - cypress.json
+  - id: '3'
+    steps:
+      - id: '3.1'
+        setup:
+          files:
+            - cypress/support/constants.js
+        solution:
+          files:
+            - cypress/support/constants.js
+  - id: '4'
+    steps:
+    - id: '4.1'
+      setup:
+        files:
+          - cypress/pageobjects/LoginPage.js
+      solution:
+        files:
+          - cypress/pageobjects/LoginPage.js
+  - id: '5'
+    steps:
+      - id: '5.1'
+        setup:
+          files:
+            - cypress/pageobjects/SwagOverviewPage.js
+        solution:
+          files:
+            - cypress/pageobjects/SwagOverviewPage.js
+  - id: '6'
+    steps:
+      - id: '6.1'
+        setup:
+          files:
+            - cypress/integration/login.spec.js
+        solution:
+          files:
+            - cypress/integration/login.spec.js
+  - id: '7'
+  - id: '8'
+    steps:
+      - id: '8.1'
+      - id: '8.2'
+      - id: '8.3'
+  - id: '9'
+    steps:
+      - id: '9.1'
+      - id: '9.2'
+  - id: '10'
