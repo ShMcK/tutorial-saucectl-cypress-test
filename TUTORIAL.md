@@ -29,7 +29,7 @@ This file is used to set [all kinds of options for your Cypress test](https://do
 
 We will set the baseUrl, which is the url of the web app you are testing against.
 
-**The Integration Directory **
+**The Integration Directory**
 Open up the `integration` directory. This is the place where the atual tests against an application are stored in a Cypress test project.
 
 It's important to keep the tests in this directory as you will need tests to be here when you use saucectl to run tests on Sauce Labs later on.
@@ -115,7 +115,7 @@ export const LOGIN_USERS = {
 ```
 
 ### 3.3 Locate Items on the Login Page
-pen the `pageobjects` directory and add a file named: `LoginPage.js`, then open `LoginPage.js` and add the following: \
+pen the `pageobjects` directory and add a file named: `LoginPage.js`, then open `LoginPage.js` and add the following:
 
 
 In `LoginPage.js` you will create several get methods to locate elements on the page you will use in your test later on:
@@ -146,7 +146,7 @@ class LoginPage {
 ```
 Since you have baseUrl specified in `cypress.json`, your tests know to visit [https://www.saucedemo.com](https://www.saucedemo.com). The first `get` method locates the div in blue below, where the other elements are found.
 
-![assets/TRT1.04B.png]()
+![assets/TRT1.04B.png]
 
 <img src="assets/TRT1.04B.png" alt="Login Page elements" width="850"/>
 
@@ -154,6 +154,104 @@ You can also see the ids, classes, and `data-test` element that your tests’ `g
 
 ### 3.4 Add a SignIn method
 
+Next, below the get methods, add in the code to create your `signIn method`, and export the` LoginPage` class so it can be used by other classes (your test methods).
+
+```
+// filename: cypress/pageobjects/LoginPage.js
+// ...
+
+
+   signIn(userDetails) {
+       const {password, username} = userDetails;
+
+       if (username) {
+           this.username.type(username);
+       }
+       if (password) {
+           this.password.type(password);
+       }
+
+       this.loginButton.click();
+   }
+}
+
+export default new LoginPage();
+
+```
+
+If you recall, in `const.js` there is a constant created called `LOGIN_USERS `which contains two objects, either `LOCKED` or `STANDARD`.
+
+The `signIn()` method will allow you to pass either the `LOCKED` or `STANDARD` object in with the `username` and `password` values.
+
+Later, when you call that method in your test, you will pass in the set of username and password fields from `const.js` depending on whether you call the method with `signIn(LOGIN_USERS.STANDARD)` or `signIn(LOGIN_USERS.LOCKED).`
+
+#### HINTS
+The final `LoginPage.js` should looks like this:
+
+```
+class LoginPage {
+   get screen() {
+       return cy.get('#login_button_container');
+   }
+
+   get username() {
+       return cy.get('#user-name');
+   }
+
+   get password() {
+       return cy.get('#password');
+   }
+
+   get loginButton() {
+       return cy.get('.btn_action');
+   }
+
+   get errorMessage() {
+       return cy.get('[data-test="error"]');
+   }
+   signIn(userDetails) {
+       const {password, username} = userDetails;
+
+       if (username) {
+           this.username.type(username);
+       }
+       if (password) {
+           this.password.type(password);
+       }
+
+       this.loginButton.click();
+   }
+}
+
+export default new LoginPage();
+```
+### 3.5 Create Inventory Page Object
+The page that you enter after you enter login credentials also needs to be accessed. This is known as the _Inventory_ or _Swag Labs_ page.
+
+![assets/TRT1.04C.png]
+
+Open `SwagOverviewPage.js` and copy in the following code:
+
+```
+get screen() {
+        return cy.get('.inventory_list');
+    }
+```
+
+ This will go to the sauce demo page that lists the products, and search for the div that contains the list of items with an id of `inventory_list`.
+
+ #### HINTS
+
+ Your `SwagOverviewPage.js` file should look like this:
+ ```
+//filename: cypress/pageobjects/SwagOverviewPage.js
+class SwagOverviewPage {
+    get screen() {
+        return cy.get('.inventory_list');
+    }
+}
+export default new SwagOverviewPage();
+```
 
 ## 4. Create a Cypress Test
 
