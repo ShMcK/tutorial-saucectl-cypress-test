@@ -255,13 +255,47 @@ export default new SwagOverviewPage();
 
 ## 4. Create a Cypress Test
 
-> Optional summary for Level 1
+> Create a test spec file for the Swag Labs login page. 
 
-Here's where you can put a description, examples, and instructions for the lesson.
 
-### 4.1 Level 4 Step 1
+Now that you have all the configuration files and page objects created, you can create your first test object to use all of these elements and run a test.
 
-This is the test text. Create an `index.html` file to pass this lesson.
+In the `cypress/integration `directory, find the file named `login.spec.js`. In accordance with [Page Object Model (POM) conventions](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/), you are creating separate directories & files for page and test objects.
+
+Open `login.spec.js` and take a look at the `describe()` method to set up your test. The `cy.visit() `method contains an empty string because it will automatically pull the `baseUrl `from the `cypress.json` file:
+
+```
+describe('LoginPage', () => {
+   beforeEach(() => {
+       cy.visit('');
+   });
+```
+
+### 4.1 Add Your First It Assertion - Login Page
+
+Next, add in an `it()` method, which is a Mocha/ Cypress standard for declaring test methods. This will check to see that when you get onto the page, the `screen` (Defined in `LoginPage.js`) element which contains the login field is visible.
+
+Add in an `it()` method, which is a Mocha/ Cypress standard for declaring test methods. This will check to see that when you get onto the page, the `screen` (Defined in `LoginPage.js`) element which contains the login field is visible.
+
+You can add this method right after the `before()` method:
+
+```
+it('should be able to test loading of login page', () => {
+       LoginPage.screen.should('be.visible');
+   });
+```
+### 4.2 Second It Assertion – Inventory Page
+
+Next, add a test to check that the next page (where you can choose items for your cart.) is visible when you log in with valid user credentials:
+
+
+```
+
+   it('should be able to login with a standard user', () => {
+       LoginPage.signIn(LOGIN_USERS.STANDARD);
+       SwagOverviewPage.screen.should('be.visible');
+   });
+```
 
 #### HINTS
 
