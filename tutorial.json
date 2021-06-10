@@ -1,1 +1,244 @@
-{}
+{
+  "version": "0.1.0",
+  "summary": {
+    "title": "Writing Cypress Tests with Saucectl",
+    "description": "Description"
+  },
+  "config": {
+    "testRunner": {
+      "command": "npm run test --",
+      "args": {
+        "filter": "--grep",
+        "tap": "--reporter=mocha-tap-reporter"
+      },
+      "directory": ".coderoad"
+    },
+    "setup": {
+      "commands": [
+        "cd .coderoad && npm install"
+      ],
+      "commits": [
+        "53ef5a90088222f5edb551ac3bdaa82a934c372b",
+        "560640b66e0966507d681ab2c4ffe2d550473e73"
+      ]
+    },
+    "repo": {
+      "uri": "https://github.com/shmck/tutorial-saucectl-cypress-test",
+      "branch": "v0.1.0"
+    },
+    "dependencies": [
+      {
+        "name": "node",
+        "version": ">=10"
+      }
+    ],
+    "reset": {
+      "commands": [
+        "echo 'resetting'"
+      ]
+    }
+  },
+  "levels": [
+    {
+      "id": "1",
+      "title": "Intro",
+      "summary": "What you'll learn",
+      "content": "What you'll learn",
+      "steps": []
+    },
+    {
+      "id": "2",
+      "title": "Cypress.json",
+      "summary": "Summary",
+      "content": "Explain",
+      "steps": [
+        {
+          "id": "2.1",
+          "setup": {
+            "files": [
+              "cypress.json"
+            ],
+            "commits": [
+              "c909b2aaeb3020e03939ac747a2be88727a19915"
+            ]
+          },
+          "solution": {
+            "files": [
+              "cypress.json"
+            ],
+            "commits": [
+              "b72bbbc5c95e2204b8ecbffa591832e407e1d7d8"
+            ]
+          },
+          "content": "Create a cypress.json with content."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Constants",
+      "summary": "Constants summary",
+      "content": "Explain",
+      "steps": [
+        {
+          "id": "3.1",
+          "setup": {
+            "files": [
+              "cypress/support/constants.js"
+            ],
+            "commits": [
+              "d4b6c50916d14088b2f0609dbbaf9af4bf55b8af"
+            ]
+          },
+          "solution": {
+            "files": [
+              "cypress/support/constants.js"
+            ],
+            "commits": [
+              "894b351bbb61a6b223b343cd8aead92119bbe7c0"
+            ]
+          },
+          "content": "Add the constants."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Page Objects",
+      "summary": "Page Object summary one line",
+      "content": "Explain",
+      "steps": [
+        {
+          "id": "4.1",
+          "setup": {
+            "files": [
+              "cypress/pageobjects/LoginPage.js"
+            ],
+            "commits": []
+          },
+          "solution": {
+            "files": [
+              "cypress/pageobjects/LoginPage.js"
+            ]
+          },
+          "content": "Setup page objects."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Another Screen",
+      "summary": "Summary one line",
+      "content": "Explain",
+      "steps": [
+        {
+          "id": "5.1",
+          "setup": {
+            "files": [
+              "cypress/pageobjects/SwagOverviewPage.js"
+            ],
+            "commits": []
+          },
+          "solution": {
+            "files": [
+              "cypress/pageobjects/SwagOverviewPage.js"
+            ]
+          },
+          "content": "Create a swag overview page object"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "First Test",
+      "summary": "Summary one line",
+      "content": "Explain",
+      "steps": [
+        {
+          "id": "6.1",
+          "setup": {
+            "files": [
+              "cypress/integration/login.spec.js"
+            ],
+            "commits": []
+          },
+          "solution": {
+            "files": [
+              "cypress/integration/login.spec.js"
+            ]
+          },
+          "content": "Test login page is visible"
+        },
+        {
+          "id": "6.2",
+          "content": "Test can login with a standard user"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Testrunner Toolkit",
+      "summary": "Summary",
+      "content": "Explain",
+      "steps": []
+    },
+    {
+      "id": "8",
+      "title": "Saucectl",
+      "summary": "Summary",
+      "content": "Explain",
+      "steps": [
+        {
+          "id": "8.1",
+          "content": "Install saucectl `npm i -g saucectl`",
+          "setup": {
+            "commits": []
+          }
+        },
+        {
+          "id": "8.2",
+          "content": "Run `saucectl configure`",
+          "setup": {
+            "commits": []
+          }
+        },
+        {
+          "id": "8.3",
+          "content": "Update .sauce/config.yml",
+          "setup": {
+            "commits": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Running tests on Sauce",
+      "summary": "one liner",
+      "content": "Explain",
+      "steps": [
+        {
+          "id": "9.1",
+          "content": "Update config.yml",
+          "setup": {
+            "commits": []
+          }
+        },
+        {
+          "id": "9.2",
+          "content": "Run `saucectl run`",
+          "setup": {
+            "commits": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Congrats",
+      "summary": "summary line",
+      "content": "You finished! Yay!",
+      "steps": []
+    }
+  ]
+}
