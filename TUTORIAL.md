@@ -299,8 +299,32 @@ Next, add a test to check that the next page (where you can choose items for you
 
 #### HINTS
 
-- This is a hint to help people through the test
-- Second hint for 1.1, don't worry if the hints don't show up yet
+The final code for your login test should look like this:
+
+```
+import LoginPage from '../pageobjects/LoginPage';
+import SwagOverviewPage from '../pageobjects/SwagOverviewPage';
+import { LOGIN_USERS } from '../support/constants';
+
+describe('LoginPage', () => {
+   beforeEach(() => {
+       cy.visit('');
+   });
+
+   it('should be able to test loading of login page', () => {
+       LoginPage.screen.should('be.visible');
+   });
+
+   it('should be able to login with a standard user', () => {
+       LoginPage.signIn(LOGIN_USERS.STANDARD);
+       SwagOverviewPage.screen.should('be.visible');
+   });
+
+   it('should not be able to login with a locked user', () => {
+       LoginPage.signIn(LOGIN_USERS.LOCKED);
+       LoginPage.errorMessage.should('have.text','Epic sadface: Sorry, this user has been locked out.');
+   });
+   ```
 
 ## 5. Introduction to saucectl & the Sauce Labs Platform 
 
