@@ -1,108 +1,120 @@
-# Writing Cypress Tests with Saucectl
+# What You'll Learn
 
-Description
+This is an introduction to your tutorial. It will show up on the first page when your tutorial is started.
 
-## 1. Intro
+## 1. Cypress Project Introduction
 
-> What you'll learn
+> This tutorial walks you through creating a very simple test against the 'Swag Labs' app at https://saucedemo.com
 
-What you'll learn
-
-## 2. Cypress.json
-
-> Summary
-
-Explain
-
-### 2.1
-
-Create a cypress.json with content.
-
-## 3. Constants
-
-> Constants summary
-
-Explain
-
-### 3.1
-
-Add the constants.
-
-## 4. Page Objects
-
-> Page Object summary one line
-
-Explain
-
-### 4.1
-
-Setup page objects.
+This course is created for the purpose of helping users understand the project structure for a Cypress test, and using this to run a test on the Sauce Labs platform using the saucectl tool. It is not intended to demonstarte best practices for writing Cypress tests. More instructions about how to write Cypress tests can be found at cypress.io. 
 
 
-## 5. Another Screen
+### 1.1 Test Directroies
 
-> Summary one line
+Take a look at the project structure on the right. Open the `/cypress` directory inside you will notice:
 
-Explain
+* `/pagebojects` – This directory contains code that will help you interact with the login and shopping page on saucedemo.com
 
-### 5.1
+* `/integration` – This is a default directory that is used for Cypress tests. You will create a login test here with some checks to make sure the login functionality on saucedemo.com is working. 
 
-Create a swag overview page object
+* `support` –  This file is created with your Cypress test by default. This is the directory where actions that occur before test files runs are kept. In this example we will be using it to store Sauce Labs credentials.
 
-## 6. First Test
+* `plugins` – This file is created with your Cypress test by default, and is used if you want to manage the Node process to modify your Cypress environment.
 
-> Summary one line
 
-Explain
+### 1.2 Cypress.json
+If you look in your project file, you should also notice a `cypress.json` file alongside the `/cypress` directroy. This is a configuration file for your cypress test code project.
 
-### 6.1
+This file is used to set [all kinds of options for your Cypress test](https://docs.cypress.io/guides/references/configuration.html).
 
-Test login page is visible
+We will set the baseUrl, which is the url of the web app you are testing against.
 
-### 6.2
+### 1.03 The Integration Directory
+Open up the `integration` directory. This is the place where the atual tests against an application are stored in a Cypress test project.
 
-Test can login with a standard user
+It's important to keep the tests in this directory as you will need tests to be here when you use saucectl to run tests on Sauce Labs later on.
 
-## 7. Testrunner Toolkit
+Notice there is just one test object in this directory, called `login.spec.js`. This will contain the code that runs the `it()` statements that will test the functionality of the [login flow](https://www.saucedemo.com/).
 
-> Summary
+### 1.04 The Pageobjects Directory
+Open up the pageobjects directory and notice there are two files:
+* `LoginPage.js` – Code for interacting with the [Swag Labs login page]()
+* `SwagOverviewPage.js` – Code for interacting with the [next page, where you can choose swag]()
 
-Explain
+In the next lessons, we will add setup the page objects, with code to interact with both of these pages.
 
-## 8. Saucectl
 
-> Summary
+## 2.1 Create Page Objects
 
-Explain
+> Optional summary for Level 1
 
-### 8.1
+Here's where you can put a description, examples, and instructions for the lesson.
 
-Install saucectl `npm i -g saucectl`
+### 2.1 Level 2 Step 1
 
-### 8.2
+This is the test text. Create an `index.html` file to pass this lesson.
 
-Run `saucectl configure`
+#### HINTS
 
-### 8.3
+- This is a hint to help people through the test
+- Second hint for 1.1, don't worry if the hints don't show up yet
 
-Update .sauce/config.yml
+## 3. Create Cypress Tests
 
-## 9. Running tests on Sauce
+> Optional summary for Level 1
 
-> one liner
+Here's where you can put a description, examples, and instructions for the lesson.
 
-Explain
+### 3.1 Level 3 Step 1
 
-### 9.1
+This is the test text. Create an `index.html` file to pass this lesson.
 
-Update config.yml
+#### HINTS
 
-### 9.2
+- This is a hint to help people through the test
+- Second hint for 1.1, don't worry if the hints don't show up yet
 
-Run `saucectl run`
+## 4. Introduction to saucectl & the Sauce Labs Platform
 
-## 10. Congrats
+> Optional summary for Level 1
 
-> summary line
+Here's where you can put a description, examples, and instructions for the lesson.
 
-You finished! Yay!
+### 4.1 Level 4 Step 1
+
+This is the test text. Create an `index.html` file to pass this lesson.
+
+#### HINTS
+
+- This is a hint to help people through the test
+- Second hint for 1.1, don't worry if the hints don't show up yet
+
+## 5. Set Up saucectl
+
+> Optional summary for Level 1
+
+Here's where you can put a description, examples, and instructions for the lesson.
+
+### 5.1 Level 1 Step 1
+
+This is the test text. Create an `index.html` file to pass this lesson.
+
+#### HINTS
+
+- This is a hint to help people through the test
+- Second hint for 1.1, don't worry if the hints don't show up yet
+
+## 6. Run Cypress Test on Sauce Labs
+
+> Optional summary for Level 1
+
+Here's where you can put a description, examples, and instructions for the lesson.
+
+### 6.1 Level 1 Step 1
+
+This is the test text. Create an `index.html` file to pass this lesson.
+
+#### HINTS
+
+- This is a hint to help people through the test
+- Second hint for 1.1, don't worry if the hints don't show up yet
