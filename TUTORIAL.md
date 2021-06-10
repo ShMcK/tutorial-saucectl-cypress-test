@@ -66,6 +66,95 @@ First, you will need to add information for your tests about the URL of the app 
 #### HINTS
 - This code should be inside cypress.json 
 
+### 3.2 Add Credenitals in constants.js
+
+Next, in the `cypress/support` directory find a file called `constants.js`.
+
+It’s good practice to store sensitive information like a username and a password in a separate file so you can use a .gitignore file to exclude it from Github repositories you will commit your project to.
+
+Open `constants.js` and create the `const` to store different login credentials:
+
+```
+export const LOGIN_USERS = {
+};
+```
+
+Next, inside of `LOGIN_USERS` add in credentials for a user that is locked out of Swag Labs:
+
+```
+LOCKED: {
+       username: 'locked_out_user',
+       password: 'secret_sauce',
+   },
+```
+
+ Last, add user credentials inside of `LOGIN_USERS` that will allow you to login:
+
+ ```
+ STANDARD: {
+       username: 'standard_user',
+       password: 'secret_sauce',
+   },
+ ```
+
+Now you can use these objects to login in your tests by calling `LOGIN_USERS.LOCKED` or `LOGIN_USERS.STANDARD`.
+#### HINTS
+Final code should look like:
+```
+// filename: cypress/support/constants.js
+export const LOGIN_USERS = {
+   LOCKED: {
+       username: 'locked_out_user',
+       password: 'secret_sauce',
+   },
+   STANDARD: {
+       username: 'standard_user',
+       password: 'secret_sauce',
+   },
+};
+```
+
+### 3.3 Locate Items on the Login Page
+pen the `pageobjects` directory and add a file named: `LoginPage.js`, then open `LoginPage.js` and add the following: \
+
+
+In `LoginPage.js` you will create several get methods to locate elements on the page you will use in your test later on:
+
+```
+class LoginPage {
+   get screen() {
+       return cy.get('#login_button_container');
+   }
+
+   get username() {
+       return cy.get('#user-name');
+   }
+
+   get password() {
+       return cy.get('#password');
+   }
+
+   get loginButton() {
+       return cy.get('.btn_action');
+   }
+
+   get errorMessage() {
+       return cy.get('[data-test="error"]');
+   }
+
+}
+```
+Since you have baseUrl specified in `cypress.json`, your tests know to visit [https://www.saucedemo.com](https://www.saucedemo.com). The first `get` method locates the div in blue below, where the other elements are found.
+
+![assets/TRT1.04B.png]()
+
+<img src="assets/TRT1.04B.png" alt="Login Page elements" width="850"/>
+
+You can also see the ids, classes, and `data-test` element that your tests’ `get` methods use to locate other elements on the page.
+
+### 3.4 Add a SignIn method
+
+
 ## 4. Create a Cypress Test
 
 > Optional summary for Level 1
