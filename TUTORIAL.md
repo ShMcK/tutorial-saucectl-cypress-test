@@ -22,7 +22,7 @@ Take a look at the project structure on the right. Open the `/cypress` directory
 * `plugins` – This file is created with your Cypress test by default, and is used if you want to manage the Node process to modify your Cypress environment.
 
 
-## 2 Test File Overview
+## 2. Test File Overview
 If you look in your project file, you should also notice a `cypress.json` file alongside the `/cypress` directroy. This is a configuration file for your cypress test code project.
 
 This file is used to set [all kinds of options for your Cypress test](https://docs.cypress.io/guides/references/configuration.html).
@@ -47,18 +47,24 @@ In the next lessons, we will add setup the page objects, with code to interact w
 
 ## 3. Create Page Objects
 
-> Optional summary for Level 1
+> Create two page object files, as well as a file to store different sets of credentials to login to Swag Labs
 
-Here's where you can put a description, examples, and instructions for the lesson.
+**Cypress.json**
 
-### 3.1 Level 3 Step 1
+Inside your project file that you created, you will notice the cypress.json file. This file is used to set [all kinds of options for your Cypress test](https://docs.cypress.io/guides/references/configuration.html). If you don’t set any options, Cypress will use a set of default values. You can pull in data from this file into your tests, to make it easier to preload data in your test.
 
-This is the test text. Create an `index.html` file to pass this lesson.
+### 3.1 Add a baseUrl to cypress.json
+
+First, you will need to add information for your tests about the URL of the app you are testing against. Add the following line to `cypress.json`, which you will use in your tests to pull in the site you are testing against.
+
+```
+{
+ "baseUrl": "https://www.saucedemo.com"
+}
+```
 
 #### HINTS
-
-- This is a hint to help people through the test
-- Second hint for 1.1, don't worry if the hints don't show up yet
+- This code should be inside cypress.json 
 
 ## 4. Create a Cypress Test
 
