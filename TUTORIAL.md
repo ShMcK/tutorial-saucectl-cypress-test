@@ -45,7 +45,7 @@ Setup page objects.
 
 Explain
 
-## 5.1
+### 5.1
 
 Create a swag overview page object
 
@@ -55,11 +55,11 @@ Create a swag overview page object
 
 Explain
 
-## 6.1
+### 6.1
 
 Test login page is visible
 
-## 6.2
+### 6.2
 
 Test can login with a standard user
 
@@ -75,15 +75,15 @@ Explain
 
 Explain
 
-## 8.1
+### 8.1
 
 Install saucectl `npm i -g saucectl`
 
-## 8.2
+### 8.2
 
 Run `saucectl configure`
 
-## 8.3
+### 8.3
 
 Update .sauce/config.yml
 
