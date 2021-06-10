@@ -29,14 +29,14 @@ This file is used to set [all kinds of options for your Cypress test](https://do
 
 We will set the baseUrl, which is the url of the web app you are testing against.
 
-### 1.03 The Integration Directory
+### 1.3 The Integration Directory
 Open up the `integration` directory. This is the place where the atual tests against an application are stored in a Cypress test project.
 
 It's important to keep the tests in this directory as you will need tests to be here when you use saucectl to run tests on Sauce Labs later on.
 
 Notice there is just one test object in this directory, called `login.spec.js`. This will contain the code that runs the `it()` statements that will test the functionality of the [login flow](https://www.saucedemo.com/).
 
-### 1.04 The Pageobjects Directory
+### 1.4 The Pageobjects Directory
 Open up the pageobjects directory and notice there are two files:
 * `LoginPage.js` – Code for interacting with the [Swag Labs login page]()
 * `SwagOverviewPage.js` – Code for interacting with the [next page, where you can choose swag]()
