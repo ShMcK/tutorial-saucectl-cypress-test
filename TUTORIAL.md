@@ -486,7 +486,7 @@ cypress:
   configFile: "cypress.json"
 rootDir: ./
 suites:
-  - name:
+  - name: "Tutorial test - Windows Chrome"
     browser: "chrome"
     platformName: "Windows 10"
     screenResolution: "1920x1080"
@@ -501,7 +501,7 @@ artifacts:
     directory: ./artifacts/
 ```
 
-### 5.3 Add a .sauceignore
+### 5.4 Add a .sauceignore
 
 The last file you will need to create is the `.sauceignore` file, which allows you to avoid uploading unnecessary files that are included in your project.
 
@@ -552,7 +552,7 @@ cypress-test-project
 
 ## 6. Run Cypress Test on Sauce Labs
 
-> Use `saucectl run` and the `config.yml` file to configure and run testsw
+> Use `saucectl run` and the `config.yml` file to configure and run tests.
 
 Here's where you can put a description, examples, and instructions for the lesson.
 
@@ -572,7 +572,7 @@ right now, if you look in config yml, you should see a set of code that looks li
 
 ```
 suites:
-  - name:
+  - name: "Tutorial test - Windows Chrome"
     browser: "chrome"
     platformName: "Windows 10"
     screenResolution: "1920x1080"
@@ -588,9 +588,10 @@ Under the exising suite, lets add in another:
 ```
 suites:
     # ...
-  - name:
-    browser: "chrome"
-    platformName: "Windows 10"
+  - name: "Tutorial test - Mac Edge 91"
+    platformName: "macOS 10.14"
+    browser: "MicrosoftEdge"
+    browserVersion: "91.0"
     config:
       testFiles: [ "login.spec.js" ]
 ```
@@ -598,7 +599,6 @@ Now when you run the command
 
 #### HINTS
 
-- This is a hint to help people through the test
-- Second hint for 1.1, don't worry if the hints don't show up yet
+- You COnfig.yml should now look like this:
 
 
