@@ -2,7 +2,7 @@
 
 This is an introduction to your tutorial. It will show up on the first page when your tutorial is started.
 
-* Learn basic JavaScript to write page objects for A Cypress test suite
+* Learn basic JavaScript to write page objects for a Cypress test suite
 
 * Learn to create Cypress test code  
 
@@ -23,6 +23,7 @@ This course is created for the purpose of helping users understand the project s
 
 
 **Test Directories**
+> Get a preview of the starting project so you understand the files and structure of your project, so you can be ready to create a very simple test against the 'Swag Labs' app.
 
 Take a look at the project structure on the right. Open the `/cypress` directory inside you will notice:
 
