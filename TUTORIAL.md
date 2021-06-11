@@ -269,7 +269,6 @@ export default new SwagOverviewPage();
 
 > Create a test spec file for the Swag Labs login page. 
 
-
 Now that you have all the configuration files and page objects created, you can create your first test object to use all of these elements and run a test.
 
 In the `cypress/integration `directory, find the file named `login.spec.js`. In accordance with [Page Object Model (POM) conventions](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/), you are creating separate directories & files for page and test objects.
@@ -311,6 +310,7 @@ Next, add a test to check that the next page (where you can choose items for you
 
 #### HINTS
 - The final code for your login test should look like this:
+
 ```
 import LoginPage from '../pageobjects/LoginPage';
 import SwagOverviewPage from '../pageobjects/SwagOverviewPage';
@@ -330,10 +330,7 @@ describe('LoginPage', () => {
        SwagOverviewPage.screen.should('be.visible');
    });
 
-   it('should not be able to login with a locked user', () => {
-       LoginPage.signIn(LOGIN_USERS.LOCKED);
-       LoginPage.errorMessage.should('have.text','Epic sadface: Sorry, this user has been locked out.');
-   });
+});
    ```
 
 ## 5. Introduction to saucectl & the Sauce Labs Platform 
@@ -355,6 +352,10 @@ First you need to download and install the Sauce Control Command Line Interface 
 This is a part of the Sauce Labs set of tools that allows you to set a configuration location & update the file in your local directory.  
 
 It also allows you to run commands to run tests locally or remotely on the Sauce Labs platform.
+
+First, open up the terminal, by clicking on the bottom left part of the Visual Studio Editor
+
+![assets/open_terminal.png]
 
 First, anywhere on your machine (in Terminal) install the saucectl tool globally, using this command `npm` to install the Saucectl package:
 
@@ -435,7 +436,7 @@ suites:
 
 artifacts:
   download:
-    when: never
+    when: always
     match:
       - console.log
     directory: ./artifacts/
@@ -494,7 +495,7 @@ suites:
 
 artifacts:
   download:
-    when: never
+    when: always
     match:
       - console.log
     directory: ./artifacts/
