@@ -161,7 +161,7 @@ export default new LoginPage();
 ```
 Since you have baseUrl specified in `cypress.json`, your tests know to visit [https://www.saucedemo.com](https://www.saucedemo.com). The first `get` method locates the div in blue below, where the other elements are found.
 
-<img src="./assets/TRT1.04B.png" alt="Login Page elements" width="850"/>
+<img src="https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04B.png" alt="Login Page elements" width="850"/>
 
 You can also see the ids, classes, and `data-test` element that your tests’ `get` methods use to locate other elements on the page.
 
@@ -236,7 +236,7 @@ class LoginPage {
 ### 3.5 Create Inventory Page Object
 The page that you enter after you enter login credentials also needs to be accessed. This is known as the _Inventory_ or _Swag Labs_ page.
 
-![Swag Overview Page](./assets/TRT1.04C.png)
+![Swag Overview Page](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04C.png)
 
 Open `SwagOverviewPage.js` and copy in the following code:
 
@@ -340,7 +340,7 @@ Sauce Labs has developed a set of tools in conjunction with saucectl to enable t
 
 This is a testing solution for developers that simplifies user setup, speeds up test execution time, unifies test results, and supports new open source frameworks like Playwright, Cypress, TestCafe, Espresson, and XCUI for running end-to-end web & mobile tests.
 
-![Test Runner Toolkit](./assets/TRT1.02A.png)
+![Test Runner Toolkit](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.02A.png)
 
 ### 5.1 Install saucectl
 
@@ -364,7 +364,7 @@ You can access your Sauce Username and Access Key on the Sauce Labs Platform
 
 Visit [https://accounts.saucelabs.com](https://accounts.saucelabs.com/am/XUI/#login/?utm_source=referral&utm_medium=LMS&utm_campaign=link). You can create a free trial account if you haven’t been assigned one.
 
-![Testrunner Toolkit](./assets/TRT4.05A.png)
+![Testrunner Toolkit](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT4.05A.png)
 
 Go to **Account> User Settings** to find your username and access key.
 
