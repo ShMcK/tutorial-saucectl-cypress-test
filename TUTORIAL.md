@@ -379,7 +379,7 @@ Go to **Account> User Settings** to find your username and access key.
 
 When you run this command in terminal, saucectl will detect your `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`, but you can run the following optional command to edit these:
 
-```
+```shell
 saucectl configure
 ```
 
@@ -588,7 +588,7 @@ suites:
     platformName: "Windows 10"
     screenResolution: "1920x1080"
     config:
-      testFiles: [ "**/*.*" ]
+      testFiles: ['**/login.spec.js']
 
 ```
 
@@ -639,7 +639,7 @@ suites:
     platformName: "Windows 10"
     screenResolution: "1920x1080"
     config:
-      testFiles: ['**/*.*']
+      testFiles: ['**/login.spec.js']
   - name: "Tutorial test - Windows Firefox 89"
     platformName: "Windows 10"
     browser: "firefox"

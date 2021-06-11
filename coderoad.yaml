@@ -76,21 +76,18 @@ levels:
             - cypress/integration/login.spec.js
     
   - id: '5'
-    # steps:
-    #   - id: '5.1'
-    #     setup:
-    #       files:
-    #         - cypress/pageobjects/SwagOverviewPage.js
-    #     solution:
-    #       files:
-    #         - cypress/pageobjects/SwagOverviewPage.js
+    steps:
+      - id: '5.1'
+      - id: '5.2'
+      - id: '5.3'
+      - id: '5.4'
   - id: '6'
-    # steps:
-    #   - id: '6.1'
-    #     setup:
-    #       files:
-    #         - cypress/integration/login.spec.js
-    #     solution:
-    #       files:
-    #         - cypress/integration/login.spec.js
-  
+    steps:
+      - id: '6.1'
+      - id: '6.2'
+        setup:
+          files:
+            - .sauce/config.yml
+        solution:
+          files:
+            - .sauce/config.yml
