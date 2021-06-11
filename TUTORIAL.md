@@ -96,18 +96,18 @@ Next, inside of `LOGIN_USERS` add in credentials for a user that is locked out o
 
 ```js
 LOCKED: {
-       username: 'locked_out_user',
-       password: 'secret_sauce',
-   },
+  username: 'locked_out_user',
+  password: 'secret_sauce',
+},
 ```
 
 Last, add user credentials inside of `LOGIN_USERS` that will allow you to login:
 
 ```js
 STANDARD: {
-      username: 'standard_user',
-      password: 'secret_sauce',
-  },
+  username: 'standard_user',
+  password: 'secret_sauce',
+},
 ```
 
 Now you can use these objects to login in your tests by calling `LOGIN_USERS.LOCKED` or `LOGIN_USERS.STANDARD`.
@@ -159,6 +159,8 @@ class LoginPage {
    }
 
 }
+
+export default new LoginPage();
 ```
 
 Since you have baseUrl specified in `cypress.json`, your tests know to visit [https://www.saucedemo.com](https://www.saucedemo.com). The first `get` method locates the div in blue below, where the other elements are found.
@@ -173,9 +175,8 @@ Next, below the get methods, add in the code to create your `signIn method`, and
 
 ```js
 // filename: cypress/pageobjects/LoginPage.js
-// ...
-
-
+class LoginPage {
+  // ...
    signIn(userDetails) {
        const {password, username} = userDetails;
 
@@ -189,9 +190,6 @@ Next, below the get methods, add in the code to create your `signIn method`, and
        this.loginButton.click();
    }
 }
-
-export default new LoginPage();
-
 ```
 
 If you recall, in `const.js` there is a constant created called `LOGIN_USERS `which contains two objects, either `LOCKED` or `STANDARD`.
@@ -246,7 +244,7 @@ export default new LoginPage();
 
 The page that you enter after you enter login credentials also needs to be accessed. This is known as the _Inventory_ or _Swag Labs_ page.
 
-![assets/TRT1.04C.png]
+![Swag Overview Page](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04C.png)
 
 Open `SwagOverviewPage.js` and copy in the following code:
 
@@ -319,7 +317,7 @@ Next, add a test to check that the next page (where you can choose items for you
 
 - The final code for your login test should look like this:
 
-```
+```js
 import LoginPage from '../pageobjects/LoginPage';
 import SwagOverviewPage from '../pageobjects/SwagOverviewPage';
 import { LOGIN_USERS } from '../support/constants';
@@ -393,87 +391,26 @@ Now you need to set up the basic files for your project. The first thing you nee
 
 In terminal, create a new (hidden) folder with the command inside your project directory (this should be at the same level as your `/cypress` `cypress.json`):
 
-```
+```shell
 touch .sauce
 ```
 
 Navigate insde of this directory in terminal:
 
-```
+```shell
 cd .sauce
 ```
 
 Next, create the configuration file which will contain instructions for how to run your Cypress tests with saucectl:
 
-```
+```shell
 touch config.yml
 ```
 
 Now, open the `config.yml` file and copy-paste the following. Updated versions of this can be found in the ([config Docs](https://docs.saucelabs.com/testrunner-toolkit/configuration#basic-configuration)):
 
-```
+```yaml
 # filename: .sauce/config.yml
-apiVersion: v1alpha
-kind: cypress
-defaults:
-  mode: sauce
-sauce:
-  region: us-west-1
-  concurrency: 2
-  metadata:
-    name: saucectl cypress example
-    tags:
-      - e2e
-      - release team
-      - other tag
-    build: Github Run $GITHUB_RUN_ID
-docker:
-  fileTransfer: copy
-cypress:
-  version: 7.3.0
-  configFile: "cypress.json"
-rootDir: ./
-suites:
-  - name:
-    browser: "chrome"
-    platformName: "Windows 10"
-    screenResolution: "1920x1080"
-    config:
-      testFiles: [ "**/*.*" ]
-
-artifacts:
-  download:
-    when: always
-    match:
-      - console.log
-    directory: ./artifacts/
-```
-
-#### HINTS
-
-- The project file should now look like this:
-
-```
-cypress-test-project
-    |
-	cypress.json
-	/.sauce
-		|
-		config.yml
-	/cypress
-		|
-        /fixtures
-		/integration
-			|
-			login.spec.js (include imports & beforeEach())
-		/pageobjects
-		/support
-        /plugins
-```
-
-- The `.sauce/config.yml` file has:
-
-```
 apiVersion: v1alpha
 kind: cypress
 defaults:
@@ -500,7 +437,67 @@ suites:
     platformName: "Windows 10"
     screenResolution: "1920x1080"
     config:
-      testFiles: [ "**/*.*" ]
+      testFiles: ['**/login.spec.js'] # Cypress native glob support.
+artifacts:
+  download:
+    when: always
+    match:
+      - console.log
+    directory: ./artifacts/
+```
+
+#### HINTS
+
+- The project file should now look like this:
+
+```text
+cypress-test-project
+    |
+	cypress.json
+	/.sauce
+		|
+		config.yml
+	/cypress
+		|
+        /fixtures
+		/integration
+			|
+			login.spec.js (include imports & beforeEach())
+		/pageobjects
+		/support
+        /plugins
+```
+
+- The `.sauce/config.yml` file has:
+
+```yaml
+apiVersion: v1alpha
+kind: cypress
+defaults:
+  mode: sauce
+sauce:
+  region: us-west-1
+  concurrency: 2
+  metadata:
+    name: saucectl cypress example
+    tags:
+      - e2e
+      - release team
+      - other tag
+    build: Github Run $GITHUB_RUN_ID
+docker:
+  fileTransfer: copy
+cypress:
+  version: 7.3.0
+  configFile: "cypress.json"
+rootDir: ./
+suites:
+  - name: "Tutorial test - Windows Chrome"
+    browser: "chrome"
+    platformName: "Windows 10"
+    screenResolution: "1920x1080"
+    config:
+      testFiles: ['**/login.spec.js'] # Cypress native glob support.
 
 artifacts:
   download:
@@ -516,7 +513,7 @@ The last file you will need to create is the `.sauceignore` file, which allows y
 
 Create the `.sauceignore` file in the root of your project, using the terminal:
 
-```
+```shell
 touch .sauceignore
 ```
 
@@ -524,7 +521,7 @@ The reason for a file like this is so that you can avoid uploading assets or oth
 
 Next, we will want to add something to your `.sauceignore` file. Open this newly created file and add in the following:
 
-```
+```text
 cypress/videos/
 cypress/results/
 cypress/screenshots/
@@ -542,7 +539,7 @@ These are several common files you may have included with your project that you 
 
 - The project file should now look like this:
 
-```
+```text
 cypress-test-project
     |
 	cypress.json
@@ -571,7 +568,7 @@ Here's where you can put a description, examples, and instructions for the lesso
 
 Now that you have tests set up in Cypress, and all of your files set up ('sauce/config.yml' and '.saucignore') you can run your tests on the Sauce Labs Cloud of virtual machines. All you need to do is use the terminal to navigate into your project directory, and run the command:
 
-```
+```shell
 saucectl run
 ```
 
@@ -584,7 +581,7 @@ You can now visit
 
 Right now, if you look in `config yml`, you should see a set of code that looks like this near the bottom:
 
-```
+```yaml
 suites:
   - name: "Tutorial test - Windows Chrome"
     browser: "chrome"
@@ -599,7 +596,7 @@ You can add mutiple `suites` into your test code, which will set the environment
 
 Under the exising suite, lets add in another:
 
-```
+```yaml
 suites:
     # ...
   - name: "Tutorial test - Windows Firefox 89"
@@ -615,7 +612,7 @@ Now when you run the command
 #### HINTS
 
 - Your Config.yml should now look like this:
-```
+```yaml
 apiVersion: v1alpha
 kind: cypress
 defaults:
