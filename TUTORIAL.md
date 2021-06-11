@@ -648,7 +648,6 @@ suites:
     config:
       testFiles: ['**/login.spec.js']
 
-# Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
 artifacts:
   download:
     when: always
