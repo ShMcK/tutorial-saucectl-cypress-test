@@ -53,6 +53,7 @@ Notice there is just one test object in this directory, called `login.spec.js`. 
 Open up the pageobjects directory and notice there are two files:
 
 - `LoginPage.js` – Code for interacting with the [Swag Labs login page](https://www.saucedemo.com/)
+
 - `SwagOverviewPage.js` – Code for interacting with the [next page, where you can choose swag](https://www.saucedemo.com/inventory.html)
 
 In the next lessons, we will add setup the page objects, with code to interact with both of these pages.
@@ -75,11 +76,7 @@ First, you will need to add information for your tests about the URL of the app 
 }
 ```
 
-#### HINTS
-
-- This code should be inside cypress.json
-
-### 3.2 Add Credenitals in constants.js
+### 3.2 Add Credentials in constants.js
 
 Next, in the `cypress/support` directory find a file called `constants.js`.
 
@@ -111,24 +108,6 @@ STANDARD: {
 ```
 
 Now you can use these objects to login in your tests by calling `LOGIN_USERS.LOCKED` or `LOGIN_USERS.STANDARD`.
-
-#### HINTS
-
-- Final code should look like:
-
-```js
-// filename: cypress/support/constants.js
-export const LOGIN_USERS = {
-   LOCKED: {
-       username: 'locked_out_user',
-       password: 'secret_sauce',
-   },
-   STANDARD: {
-       username: 'standard_user',
-       password: 'secret_sauce',
-   },
-};
-```
 
 ### 3.3 Locate Items on the Login Page
 
@@ -198,8 +177,39 @@ The `signIn()` method will allow you to pass either the `LOCKED` or `STANDARD` o
 
 Later, when you call that method in your test, you will pass in the set of username and password fields from `const.js` depending on whether you call the method with `signIn(LOGIN_USERS.STANDARD)` or `signIn(LOGIN_USERS.LOCKED).`
 
-#### HINTS
+### 3.5 Create Inventory Page Object
 
+The page that you enter after you enter login credentials also needs to be accessed. This is known as the _Inventory_ or _Swag Labs_ page.
+
+![Swag Overview Page](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04C.png)
+
+Open `SwagOverviewPage.js` and copy in the following code:
+
+```js
+get screen() {
+    return cy.get('.inventory_list');
+}
+```
+
+This will go to the sauce demo page that lists the products, and search for the div that contains the list of items with an id of `inventory_list`.
+
+#### HINTS
+- `baseUrl` code should be inside cypress.json
+- Constants code should look like:
+
+```js
+// filename: cypress/support/constants.js
+export const LOGIN_USERS = {
+   LOCKED: {
+       username: 'locked_out_user',
+       password: 'secret_sauce',
+   },
+   STANDARD: {
+       username: 'standard_user',
+       password: 'secret_sauce',
+   },
+};
+```
 - The final `LoginPage.js` should looks like this:
 
 ```js
@@ -239,25 +249,6 @@ class LoginPage {
 
 export default new LoginPage();
 ```
-
-### 3.5 Create Inventory Page Object
-
-The page that you enter after you enter login credentials also needs to be accessed. This is known as the _Inventory_ or _Swag Labs_ page.
-
-![Swag Overview Page](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04C.png)
-
-Open `SwagOverviewPage.js` and copy in the following code:
-
-```js
-get screen() {
-    return cy.get('.inventory_list');
-}
-```
-
-This will go to the sauce demo page that lists the products, and search for the div that contains the list of items with an id of `inventory_list`.
-
-#### HINTS
-
 - Your `SwagOverviewPage.js` file should look like this:
 
 ```js
@@ -392,7 +383,7 @@ Now you need to set up the basic files for your project. The first thing you nee
 In terminal, create a new (hidden) folder with the command inside your project directory (this should be at the same level as your `/cypress` `cypress.json`):
 
 ```shell
-touch .sauce
+mkdir .sauce
 ```
 
 Navigate insde of this directory in terminal:
