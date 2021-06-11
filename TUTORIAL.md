@@ -70,7 +70,7 @@ Inside your project file that you created, you will notice the cypress.json file
 
 First, you will need to add information for your tests about the URL of the app you are testing against. Add the following line to `cypress.json`, which you will use in your tests to pull in the site you are testing against.
 
-```
+```json
 {
  "baseUrl": "https://www.saucedemo.com/v1/"
 }
@@ -87,7 +87,7 @@ It’s good practice to store sensitive information like a username and a passwo
 
 Open `constants.js` and create the `const` to store different login credentials:
 
-```
+```js
 export const LOGIN_USERS = {
 };
 ```
