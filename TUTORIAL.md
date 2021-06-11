@@ -579,6 +579,7 @@ saucectl run
 
 You can now visit
 [app.saucelabs.com](https://app.saucelabs.com/dashboard/tests/vdc) and go to the **Automated > Test Results** dashboard.
+
 ![https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/test-dashboard.png]
 
 ### 6.2 Specify Which Tests
