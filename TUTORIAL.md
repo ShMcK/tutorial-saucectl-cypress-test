@@ -44,7 +44,7 @@ This file is used to set [all kinds of options for your Cypress test](https://do
 We will set the baseUrl, which is the url of the web app you are testing against.
 
 **The Integration Directory**
-Open up the `integration` directory. This is the place where the atual tests against an application are stored in a Cypress test project.
+Open up the `integration` directory. This is the place where the actual tests against an application are stored in a Cypress test project.
 
 It's important to keep the tests in this directory as you will need tests to be here when you use saucectl to run tests on Sauce Labs later on.
 
@@ -342,7 +342,7 @@ describe('LoginPage', () => {
 
 Sauce Labs has developed a set of tools in conjunction with saucectl to enable test developers to get set up quickly to scale up their testing to more browsers and devices, and to be able to do this with a wider range of testing frameworks than ever before.
 
-This is a testing solution for developers that simplifies user setup, speeds up test execution time, unifies test results, and supports new open source frameworks like Playwright, Cypress, TestCafe, Espresson, and XCUI for running end-to-end web & mobile tests.
+This is a testing solution for developers that simplifies user setup, speeds up test execution time, unifies test results, and supports new open source frameworks like Playwright, Cypress, TestCafe, Espresso, and XCUI for running end-to-end web & mobile tests.
 
 ![assets/TRT1.02A.png]
 
@@ -381,7 +381,7 @@ This command prompts you to manually enter your credentials if it cannot detect 
 
 ### 5.3 The Configuration File
 
-Now you need to set up the basic files for your project. The first thing you need to do is create a configuration file inside of a n directory called `.sauce`.
+Now you need to set up the basic files for your project. The first thing you need to do is create a configuration file inside of a directory called `.sauce`.
 
 In terminal, create a new (hidden) folder with the command inside your project directory (this should be at the same level as your `/cypress` `cypress.json`):
 
