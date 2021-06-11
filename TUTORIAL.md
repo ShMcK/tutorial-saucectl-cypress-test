@@ -2,6 +2,19 @@
 
 This is an introduction to your tutorial. It will show up on the first page when your tutorial is started.
 
+* Learn basic JavaScript to write page object that runs on Cypress
+
+* Learn to create Cypress test code  
+
+* Learn about the components of saucectl with the Sauce Labs platform
+
+* Set up the necessary components to run Cypress and saucectl with the Sauce Labs platform on your computer
+
+* Understand the configuration files for Cypress on saucectl with the Sauce Labs platform and how to modify them
+
+* Run a saucectl Cypress test with the Sauce Labs platform & Cypress test suite
+
+
 ## 1. Cypress Project Introduction
 
 > This tutorial walks you through creating a very simple test against the 'Swag Labs' app at https://saucedemo.com
@@ -352,7 +365,7 @@ You can access your Sauce Username and Access Key on the Sauce Labs Platform
 
 Visit [ttps://accounts.saucelabs.com](https://accounts.saucelabs.com/am/XUI/#login/?utm_source=referral&utm_medium=LMS&utm_campaign=link). You can create a free trial account if you haven’t been assigned one.
 
-![assets/4.05A.png]
+![assets/TRT4.05A.png]
 
 Go to **Account> User Settings** to find your username and access key.
 
@@ -367,7 +380,7 @@ This command prompts you to manually enter your credentials if it cannot detect 
 
 ### 5.3 The Configuration File
 
-Now you need to set up the basic files for your project. The first thing you need to do is create a configuration file inside of a hidde directory called `.sauce`.
+Now you need to set up the basic files for your project. The first thing you need to do is create a configuration file inside of a n directory called `.sauce`.
 
 In terminal, create a new (hidden) folder with the command inside your project directory (this should be at the same level as your `/cypress` `cypress.json`):
 
