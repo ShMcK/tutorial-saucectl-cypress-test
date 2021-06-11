@@ -58,7 +58,6 @@ Open up the pageobjects directory and notice there are two files:
 In the next lessons, we will add setup the page objects, with code to interact with both of these pages.
 
 
-
 ## 3. Create Page Objects
 
 > Create two page object files, as well as a file to store different sets of credentials to login to Swag Labs
@@ -112,6 +111,7 @@ LOCKED: {
  ```
 
 Now you can use these objects to login in your tests by calling `LOGIN_USERS.LOCKED` or `LOGIN_USERS.STANDARD`.
+
 #### HINTS
 - Final code should look like:
 ```
@@ -245,10 +245,10 @@ The page that you enter after you enter login credentials also needs to be acces
 
 Open `SwagOverviewPage.js` and copy in the following code:
 
-```
+```js
 get screen() {
-        return cy.get('.inventory_list');
-    }
+    return cy.get('.inventory_list');
+}
 ```
 
  This will go to the sauce demo page that lists the products, and search for the div that contains the list of items with an id of `inventory_list`.
@@ -256,7 +256,7 @@ get screen() {
  #### HINTS
  - Your `SwagOverviewPage.js` file should look like this:
  ```
-//filename: cypress/pageobjects/SwagOverviewPage.js
+ //filename: cypress/pageobjects/SwagOverviewPage.js
 class SwagOverviewPage {
     get screen() {
         return cy.get('.inventory_list');
