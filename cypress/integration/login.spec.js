@@ -11,4 +11,9 @@ describe('LoginPage', () => {
     it('should be able to test loading of login page', () => {
         LoginPage.screen.should('be.visible');
     });
+
+    it('should be able to login with a standard user', () => {
+        LoginPage.signIn(LOGIN_USERS.STANDARD);
+        SwagOverviewPage.screen.should('be.visible');
+    });
 });
