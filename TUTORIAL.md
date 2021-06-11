@@ -111,7 +111,7 @@ Now you can use these objects to login in your tests by calling `LOGIN_USERS.LOC
 
 ### 3.3 Locate Items on the Login Page
 
-pen the `pageobjects` directory and add a file named: `LoginPage.js`, then open `LoginPage.js` and add the following:
+Open the `pageobjects` directory and add a file named: `LoginPage.js`, then open `LoginPage.js` and add the following:
 
 In `LoginPage.js` you will create several get methods to locate elements on the page you will use in your test later on:
 
@@ -171,11 +171,11 @@ class LoginPage {
 }
 ```
 
-If you recall, in `const.js` there is a constant created called `LOGIN_USERS `which contains two objects, either `LOCKED` or `STANDARD`.
+If you recall, in `constants.js` there is a constant created called `LOGIN_USERS `which contains two objects, either `LOCKED` or `STANDARD`.
 
 The `signIn()` method will allow you to pass either the `LOCKED` or `STANDARD` object in with the `username` and `password` values.
 
-Later, when you call that method in your test, you will pass in the set of username and password fields from `const.js` depending on whether you call the method with `signIn(LOGIN_USERS.STANDARD)` or `signIn(LOGIN_USERS.LOCKED).`
+Later, when you call that method in your test, you will pass in the set of username and password fields from `constants.js` depending on whether you call the method with `signIn(LOGIN_USERS.STANDARD)` or `signIn(LOGIN_USERS.LOCKED).`
 
 ### 3.5 Create Inventory Page Object
 
@@ -276,6 +276,8 @@ describe('LoginPage', () => {
    beforeEach(() => {
        cy.visit('');
    });
+   // tests
+});
 ```
 
 ### 4.1 Add Your First It Assertion - Login Page
@@ -288,8 +290,8 @@ You can add this method right after the `before()` method:
 
 ```js
 it('should be able to test loading of login page', () => {
-       LoginPage.screen.should('be.visible');
-   });
+    LoginPage.screen.should('be.visible');
+});
 ```
 
 ### 4.2 Second It Assertion – Inventory Page
@@ -297,11 +299,10 @@ it('should be able to test loading of login page', () => {
 Next, add a test to check that the next page (where you can choose items for your cart.) is visible when you log in with valid user credentials:
 
 ```js
-
-   it('should be able to login with a standard user', () => {
-       LoginPage.signIn(LOGIN_USERS.STANDARD);
-       SwagOverviewPage.screen.should('be.visible');
-   });
+it('should be able to login with a standard user', () => {
+    LoginPage.signIn(LOGIN_USERS.STANDARD);
+    SwagOverviewPage.screen.should('be.visible');
+});
 ```
 
 #### HINTS
@@ -438,28 +439,35 @@ artifacts:
     directory: ./artifacts/
 ```
 
-#### HINTS
+### 5.4 Add a .sauceignore
 
-- The project file should now look like this:
+The last file you will need to create is the `.sauceignore` file, which allows you to avoid uploading unnecessary files that are included in your project.
 
-```text
-cypress-test-project
-    |
-	cypress.json
-	/.sauce
-		|
-		config.yml
-	/cypress
-		|
-        /fixtures
-		/integration
-			|
-			login.spec.js (include imports & beforeEach())
-		/pageobjects
-		/support
-        /plugins
+Create the `.sauceignore` file in the root of your project, using the terminal:
+
+```shell
+touch .sauceignore
 ```
 
+The reason for a file like this is so that you can avoid uploading assets or other things that may get stored in your test file. a good example of this is the `/assets` directory that (can) be created when you run tests on Sauce Labs. Sauce Labs will automatically add things like screenshots and video into your project, to make it easier to share and record issues that occured when your tests were run.
+
+Next, we will want to add something to your `.sauceignore` file. Open this newly created file and add in the following:
+
+```text
+cypress/videos/
+cypress/results/
+cypress/screenshots/
+node_modules/
+.git/
+.github/
+.DS_Store
+__assets__
+**/__assets__
+```
+
+These are several common files you may have included with your project that you don't want stored on Sauce Labs (It will take longer for your tests to run if you upload these), and they aren't necessary for your test suites.
+
+#### HINTS
 - The `.sauce/config.yml` file has:
 
 ```yaml
@@ -498,37 +506,6 @@ artifacts:
       - console.log
     directory: ./artifacts/
 ```
-
-### 5.4 Add a .sauceignore
-
-The last file you will need to create is the `.sauceignore` file, which allows you to avoid uploading unnecessary files that are included in your project.
-
-Create the `.sauceignore` file in the root of your project, using the terminal:
-
-```shell
-touch .sauceignore
-```
-
-The reason for a file like this is so that you can avoid uploading assets or other things that may get stored in your test file. a good example of this is the `/assets` directory that (can) be created when you run tests on Sauce Labs. Sauce Labs will automatically add things like screenshots and video into your project, to make it easier to share and record issues that occured when your tests were run.
-
-Next, we will want to add something to your `.sauceignore` file. Open this newly created file and add in the following:
-
-```text
-cypress/videos/
-cypress/results/
-cypress/screenshots/
-node_modules/
-.git/
-.github/
-.DS_Store
-__assets__
-**/__assets__
-```
-
-These are several common files you may have included with your project that you don't want stored on Sauce Labs (It will take longer for your tests to run if you upload these), and they aren't necessary for your test suites.
-
-#### HINTS
-
 - The project file should now look like this:
 
 ```text
