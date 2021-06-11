@@ -16,4 +16,9 @@ describe('login.spec.js', () => {
         const result = file.match(/it.+\n\s+LoginPage.screen.should\([\'\"]be.visible[\'\"]\)/)
         expect(!!result).to.be.ok
     })
+
+    it('should have a test for logging in to the SwagOverviewPage', () => {
+        const result = file.match(/it.+\n\s+LoginPage.signIn\(LOGIN_USERS\.STANDARD\);?\n\s+SwagOverviewPage.screen.should\(['"]be.visible['"]\)/)
+        expect(!!result).to.be.ok
+    })
 })
