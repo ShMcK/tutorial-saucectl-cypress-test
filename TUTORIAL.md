@@ -99,7 +99,7 @@ LOCKED: {
 
 Now you can use these objects to login in your tests by calling `LOGIN_USERS.LOCKED` or `LOGIN_USERS.STANDARD`.
 #### HINTS
-Final code should look like:
+- Final code should look like:
 ```
 // filename: cypress/support/constants.js
 export const LOGIN_USERS = {
@@ -186,8 +186,7 @@ The `signIn()` method will allow you to pass either the `LOCKED` or `STANDARD` o
 Later, when you call that method in your test, you will pass in the set of username and password fields from `const.js` depending on whether you call the method with `signIn(LOGIN_USERS.STANDARD)` or `signIn(LOGIN_USERS.LOCKED).`
 
 #### HINTS
-The final `LoginPage.js` should looks like this:
-
+- The final `LoginPage.js` should looks like this:
 ```
 class LoginPage {
    get screen() {
@@ -241,8 +240,7 @@ get screen() {
  This will go to the sauce demo page that lists the products, and search for the div that contains the list of items with an id of `inventory_list`.
 
  #### HINTS
-
- Your `SwagOverviewPage.js` file should look like this:
+ - Your `SwagOverviewPage.js` file should look like this:
  ```
 //filename: cypress/pageobjects/SwagOverviewPage.js
 class SwagOverviewPage {
@@ -298,9 +296,7 @@ Next, add a test to check that the next page (where you can choose items for you
 ```
 
 #### HINTS
-
-The final code for your login test should look like this:
-
+- The final code for your login test should look like this:
 ```
 import LoginPage from '../pageobjects/LoginPage';
 import SwagOverviewPage from '../pageobjects/SwagOverviewPage';
