@@ -13,4 +13,10 @@ describe("saucectl", () => {
             expect(false).to.be.true;
         }
     });
+    it("is not configured", async () => {
+        const ymlFile = `${process.env.HOME}/.sauce/credentials.yml`;
+        const result = yaml.load(await fsPromises.readFile(ymlFile, 'utf-8'));
+        expect(result['username']).to.be.ok;
+        expect(result['accessKey']).to.be.ok;
+    });
 });
