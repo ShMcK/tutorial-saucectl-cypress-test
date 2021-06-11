@@ -2,7 +2,7 @@
 
 This is an introduction to your tutorial. It will show up on the first page when your tutorial is started.
 
-* Learn basic JavaScript to write page object that runs on Cypress
+* Learn basic JavaScript to write page objects for A Cypress test suite
 
 * Learn to create Cypress test code  
 
@@ -366,7 +366,7 @@ You can access your Sauce Username and Access Key on the Sauce Labs Platform
 Visit [ttps://accounts.saucelabs.com](https://accounts.saucelabs.com/am/XUI/#login/?utm_source=referral&utm_medium=LMS&utm_campaign=link). You can create a free trial account if you haven’t been assigned one.
 
 ![assets/TRT4.05A.png]
-
+s
 Go to **Account> User Settings** to find your username and access key.
 
 
@@ -500,6 +500,53 @@ artifacts:
 ```
 
 ### 5.3 Add a .sauceignore
+
+The last file you will need to create is the `.sauceignore` file, which allows you to avoid uploading unnecessary files that are included in your project.
+
+Create the `.sauceignore` file in the root of your project:
+
+```
+touch .sauceignore
+```
+
+The reason for a file like this is so that you can avoid uploading assets or other things that may get stored in your test file. a good example of this is the `/assets` directory that (can) be created when you run tests on Sauce Labs. Sauce Labs will automatically add things like screenshots and video into your project, to make it easier to share and record issues that occured when your tests were run.
+
+Next, we will want to add something to your `.sauceignore` file. Open this newly created file and add in the following:
+
+```
+cypress/videos/
+cypress/results/
+cypress/screenshots/
+node_modules/
+.git/
+.github/
+.DS_Store
+__assets__
+**/__assets__
+````
+
+These are several common files you may have included with your project that you don't want stored on Sauce Labs (It will take longer for your tests to run if you upload these), and they aren't necessary for your test suites.
+
+#### HINTS
+- The project file should now look like this:
+```
+cypress-test-project
+    |
+	cypress.json
+    .sauceignore
+	/.sauce
+		|
+		config.yml 
+	/cypress
+		|
+        /fixtures
+		/integration
+			|
+			login.spec.js (include imports & beforeEach())
+		/pageobjects	
+		/support
+        /plugins
+```
 
 ## 6. Run Cypress Test on Sauce Labs
 
