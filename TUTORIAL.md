@@ -69,7 +69,7 @@ Inside your project file that you created, you will notice the cypress.json file
 
 First, you will need to add information for your tests about the URL of the app you are testing against. Add the following line to `cypress.json`, which you will use in your tests to pull in the site you are testing against.
 
-```
+```json
 {
  "baseUrl": "https://www.saucedemo.com/v1/"
 }
@@ -87,14 +87,14 @@ It’s good practice to store sensitive information like a username and a passwo
 
 Open `constants.js` and create the `const` to store different login credentials:
 
-```
+```js
 export const LOGIN_USERS = {
 };
 ```
 
 Next, inside of `LOGIN_USERS` add in credentials for a user that is locked out of Swag Labs:
 
-```
+```js
 LOCKED: {
        username: 'locked_out_user',
        password: 'secret_sauce',
@@ -103,7 +103,7 @@ LOCKED: {
 
 Last, add user credentials inside of `LOGIN_USERS` that will allow you to login:
 
-```
+```js
 STANDARD: {
       username: 'standard_user',
       password: 'secret_sauce',
@@ -116,7 +116,7 @@ Now you can use these objects to login in your tests by calling `LOGIN_USERS.LOC
 
 - Final code should look like:
 
-```
+```js
 // filename: cypress/support/constants.js
 export const LOGIN_USERS = {
    LOCKED: {
@@ -136,7 +136,7 @@ pen the `pageobjects` directory and add a file named: `LoginPage.js`, then open 
 
 In `LoginPage.js` you will create several get methods to locate elements on the page you will use in your test later on:
 
-```
+```js
 class LoginPage {
    get screen() {
        return cy.get('#login_button_container');
@@ -165,15 +165,13 @@ Since you have baseUrl specified in `cypress.json`, your tests know to visit [ht
 
 ![Swag Labs Login](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04B.png)
 
-<img src="assets/TRT1.04B.png" alt="Login Page elements" width="850"/>
-
 You can also see the ids, classes, and `data-test` element that your tests’ `get` methods use to locate other elements on the page.
 
 ### 3.4 Add a SignIn method
 
 Next, below the get methods, add in the code to create your `signIn method`, and export the` LoginPage` class so it can be used by other classes (your test methods).
 
-```
+```js
 // filename: cypress/pageobjects/LoginPage.js
 // ...
 
@@ -206,7 +204,7 @@ Later, when you call that method in your test, you will pass in the set of usern
 
 - The final `LoginPage.js` should looks like this:
 
-```
+```js
 class LoginPage {
    get screen() {
        return cy.get('#login_button_container');
@@ -264,7 +262,7 @@ This will go to the sauce demo page that lists the products, and search for the 
 
 - Your `SwagOverviewPage.js` file should look like this:
 
-```
+```js
 //filename: cypress/pageobjects/SwagOverviewPage.js
 class SwagOverviewPage {
    get screen() {
@@ -284,7 +282,7 @@ In the `cypress/integration `directory, find the file named `login.spec.js`. In 
 
 Open `login.spec.js` and take a look at the `describe()` method to set up your test. The `cy.visit() `method contains an empty string because it will automatically pull the `baseUrl `from the `cypress.json` file:
 
-```
+```js
 describe('LoginPage', () => {
    beforeEach(() => {
        cy.visit('');
@@ -299,7 +297,7 @@ Add in an `it()` method, which is a Mocha/ Cypress standard for declaring test m
 
 You can add this method right after the `before()` method:
 
-```
+```js
 it('should be able to test loading of login page', () => {
        LoginPage.screen.should('be.visible');
    });
@@ -309,7 +307,7 @@ it('should be able to test loading of login page', () => {
 
 Next, add a test to check that the next page (where you can choose items for your cart.) is visible when you log in with valid user credentials:
 
-```
+```js
 
    it('should be able to login with a standard user', () => {
        LoginPage.signIn(LOGIN_USERS.STANDARD);
