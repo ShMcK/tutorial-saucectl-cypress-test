@@ -49,7 +49,7 @@ It's important to keep the tests in this directory as you will need tests to be 
 
 Notice there is just one test object in this directory, called `login.spec.js`. This will contain the code that runs the `it()` statements that will test the functionality of the [login flow](https://www.saucedemo.com/).
 
-**1.4 The Pageobjects Directory**
+**The Pageobjects Directory**
 Open up the pageobjects directory and notice there are two files:
 * `LoginPage.js` – Code for interacting with the [Swag Labs login page]()
 * `SwagOverviewPage.js` – Code for interacting with the [next page, where you can choose swag]()
@@ -72,14 +72,14 @@ First, you will need to add information for your tests about the URL of the app 
 
 ```
 {
- "baseUrl": "https://www.saucedemo.com"
+ "baseUrl": "https://www.saucedemo.com/v1/"
 }
 ```
 
 #### HINTS
-- This code should be inside cypress.json 
+- This code should be inside cypress.json
 
-### 3.2 Add Credenitals in constants.js
+### 3.2 Add Credentials in constants.js
 
 Next, in the `cypress/support` directory find a file called `constants.js`.
 
@@ -499,7 +499,7 @@ artifacts:
     directory: ./artifacts/
 ```
 
-### 5.3 Add a .sauceignore
+### 5.4 Add a .sauceignore
 
 The last file you will need to create is the `.sauceignore` file, which allows you to avoid uploading unnecessary files that are included in your project.
 
