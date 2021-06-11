@@ -177,10 +177,42 @@
       "steps": [
         {
           "id": "4.1",
+          "setup": {
+            "files": [
+              "cypress/integration/login.spec.js"
+            ],
+            "commits": [
+              "cffae716a6f6df1ecf2a1f0351efbc922ae51020"
+            ]
+          },
+          "solution": {
+            "files": [
+              "cypress/integration/login.spec.js"
+            ],
+            "commits": [
+              "036844ed21af24e492c508df3a6fe86296f836b6"
+            ]
+          },
           "content": "Next, add in an `it()` method, which is a Mocha/ Cypress standard for declaring test methods. This will check to see that when you get onto the page, the `screen` (Defined in `LoginPage.js`) element which contains the login field is visible.\n\nAdd in an `it()` method, which is a Mocha/ Cypress standard for declaring test methods. This will check to see that when you get onto the page, the `screen` (Defined in `LoginPage.js`) element which contains the login field is visible.\n\nYou can add this method right after the `before()` method:\n\n```js\nit('should be able to test loading of login page', () => {\n    LoginPage.screen.should('be.visible');\n});\n```"
         },
         {
           "id": "4.2",
+          "setup": {
+            "files": [
+              "cypress/integration/login.spec.js"
+            ],
+            "commits": [
+              "d7d5ce888c8d754a6f5d21949c94cb5b4b6ce620"
+            ]
+          },
+          "solution": {
+            "files": [
+              "cypress/integration/login.spec.js"
+            ],
+            "commits": [
+              "58152eac07e4b4779c8176f1bf54f0df3f0dc88a"
+            ]
+          },
           "content": "Next, add a test to check that the next page (where you can choose items for your cart.) is visible when you log in with valid user credentials:\n\n\n```js\n   it('should be able to login with a standard user', () => {\n       LoginPage.signIn(LOGIN_USERS.STANDARD);\n       SwagOverviewPage.screen.should('be.visible');\n   });\n```",
           "hints": [
             "The final code for your login test should look like this:\n```js\nimport LoginPage from '../pageobjects/LoginPage';\nimport SwagOverviewPage from '../pageobjects/SwagOverviewPage';\nimport { LOGIN_USERS } from '../support/constants';\n\ndescribe('LoginPage', () => {\n   beforeEach(() => {\n       cy.visit('');\n   });\n\n   it('should be able to test loading of login page', () => {\n       LoginPage.screen.should('be.visible');\n   });\n\n   it('should be able to login with a standard user', () => {\n       LoginPage.signIn(LOGIN_USERS.STANDARD);\n       SwagOverviewPage.screen.should('be.visible');\n   });\n\n   it('should not be able to login with a locked user', () => {\n       LoginPage.signIn(LOGIN_USERS.LOCKED);\n       LoginPage.errorMessage.should('have.text','Epic sadface: Sorry, this user has been locked out.');\n   });\n});\n```"
