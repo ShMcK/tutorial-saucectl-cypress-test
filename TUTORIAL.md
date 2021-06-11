@@ -328,20 +328,171 @@ describe('LoginPage', () => {
 
 ## 5. Introduction to saucectl & the Sauce Labs Platform 
 
-> Optional summary for Level 1
+> Run tests at scale, on multiple devices and browsers, using saucectl and the Sauce Labs Cloud
 
-Here's where you can put a description, examples, and instructions for the lesson.
+Sauce Labs has developed a set of tools in conjunction with saucectl to enable test developers to get set up quickly to scale up their testing to more browsers and devices, and to be able to do this with a wider range of testing frameworks than ever before.
 
-### 5.1 Level 1 Step 1
+This is a testing solution for developers that simplifies user setup, speeds up test execution time, unifies test results, and supports new open source frameworks like Playwright, Cypress, TestCafe, Espresson, and XCUI for running end-to-end web & mobile tests.
 
-This is the test text. Create an `index.html` file to pass this lesson.
+![assets/TRT1.02A.png]
+
+### 5.1 Install saucectl
+
+`saucectl` stands for Sauce Control, the command line interface for running non-Selenium tests such a Cypress, TestCafe, Espresso, and XCUITest. The toolkit includes `saucectl` commands that allow you to interface with Sauce Labs, running hundreds of test in parallel on Sauce Labs Virtual Machines, making it easy to interpret, share, and analyze those test results.
+
+First you need to download and install the Sauce Control Command Line Interface (CLI) that you will use to run Sauce Labs. T
+
+This is a part of the Sauce Labs set of tools that allows you to set a configuration location & update the file in your local directory.  
+
+It also allows you to run commands to run tests locally or remotely on the Sauce Labs platform.
+
+First, anywhere on your machine (in Terminal) install the saucectl tool globally, using this command `npm` to install the Saucectl package:
+
+`npm i -g saucectl`
+
+### 5.2 Set Sauce Username and Access Key
+
+You can access your Sauce Username and Access Key on the Sauce Labs Platform
+
+Visit [ttps://accounts.saucelabs.com](https://accounts.saucelabs.com/am/XUI/#login/?utm_source=referral&utm_medium=LMS&utm_campaign=link). You can create a free trial account if you haven’t been assigned one.
+
+![assets/4.05A.png]
+
+Go to **Account> User Settings** to find your username and access key.
+
+
+When you run this command in terminal, saucectl will detect your `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`, but you can run the following optional command to edit these:
+
+```
+saucectl configure
+```
+
+This command prompts you to manually enter your credentials if it cannot detect any environment variables, and will generate a `credentials.yml` file in a .sauce directory in your home folder.
+
+### 5.3 The Configuration File
+
+Now you need to set up the basic files for your project. The first thing you need to do is create a configuration file inside of a hidde directory called `.sauce`.
+
+In terminal, create a new (hidden) folder with the command inside your project directory (this should be at the same level as your `/cypress` `cypress.json`):
+
+```
+touch .sauce
+```
+
+Navigate insde of this directory in terminal:
+
+```
+cd .sauce
+```
+Next, create the configuration file which will contain instructions for how to run your Cypress tests with saucectl:
+
+```
+touch config.yml
+```
+
+Now, open the `config.yml` file and copy-paste the following. Updated versions of this can be found in the ([config Docs](https://docs.saucelabs.com/testrunner-toolkit/configuration#basic-configuration)):
+
+
+```
+# filename: .sauce/config.yml
+apiVersion: v1alpha
+kind: cypress
+defaults:
+  mode: sauce
+sauce:
+  region: us-west-1
+  concurrency: 2
+  metadata:
+    name: saucectl cypress example
+    tags:
+      - e2e
+      - release team
+      - other tag
+    build: Github Run $GITHUB_RUN_ID
+docker:
+  fileTransfer: copy
+cypress:
+  version: 7.3.0
+  configFile: "cypress.json"
+rootDir: ./
+suites:
+  - name:
+    browser: "chrome"
+    platformName: "Windows 10"
+    screenResolution: "1920x1080"
+    config:
+      testFiles: [ "**/*.*" ]
+
+artifacts:
+  download:
+    when: never
+    match:
+      - console.log
+    directory: ./artifacts/
+```
+
 
 #### HINTS
+- The project file should now look like this:
+```
+cypress-test-project
+    |
+	cypress.json
+	/.sauce
+		|
+		config.yml 
+	/cypress
+		|
+        /fixtures
+		/integration
+			|
+			login.spec.js (include imports & beforeEach())
+		/pageobjects	
+		/support
+        /plugins
+```
 
-- This is a hint to help people through the test
-- Second hint for 1.1, don't worry if the hints don't show up yet
+- The `.sauce/config.yml` file has:
+```
+apiVersion: v1alpha
+kind: cypress
+defaults:
+  mode: sauce
+sauce:
+  region: us-west-1
+  concurrency: 2
+  metadata:
+    name: saucectl cypress example
+    tags:
+      - e2e
+      - release team
+      - other tag
+    build: Github Run $GITHUB_RUN_ID
+docker:
+  fileTransfer: copy
+cypress:
+  version: 7.3.0
+  configFile: "cypress.json"
+rootDir: ./
+suites:
+  - name:
+    browser: "chrome"
+    platformName: "Windows 10"
+    screenResolution: "1920x1080"
+    config:
+      testFiles: [ "**/*.*" ]
 
-## 6. Set Up saucectl Run Cypress Test on Sauce Labs
+artifacts:
+  download:
+    when: never
+    match:
+      - console.log
+    directory: ./artifacts/
+```
+
+### 5.3 Add a .sauceignore
+
+## 6. Run Cypress Test on Sauce Labs
 
 > Optional summary for Level 1
 
@@ -357,17 +508,3 @@ This is the test text. Create an `index.html` file to pass this lesson.
 - Second hint for 1.1, don't worry if the hints don't show up yet
 
 
-## 7. Run Cypress Test on Sauce Labs
-
-> Optional summary for Level 1
-
-Here's where you can put a description, examples, and instructions for the lesson.
-
-### 7.1 Level 1 Step 1
-
-This is the test text. Create an `index.html` file to pass this lesson.
-
-#### HINTS
-
-- This is a hint to help people through the test
-- Second hint for 1.1, don't worry if the hints don't show up yet
