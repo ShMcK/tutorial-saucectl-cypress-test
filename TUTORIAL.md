@@ -36,7 +36,7 @@ Take a look at the project structure on the right. Open the `/cypress` directory
 
 
 ## 2. Test File Overview
-If you look in your project file, you should also notice a `cypress.json` file alongside the `/cypress` directroy. This is a configuration file for your cypress test code project.
+If you look in your project file, you should also notice a `cypress.json` file alongside the `/cypress` directory. This is a configuration file for your cypress test code project.
 
 This file is used to set [all kinds of options for your Cypress test](https://docs.cypress.io/guides/references/configuration.html).
 
