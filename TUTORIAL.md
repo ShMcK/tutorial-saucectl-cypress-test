@@ -163,7 +163,7 @@ class LoginPage {
 
 Since you have baseUrl specified in `cypress.json`, your tests know to visit [https://www.saucedemo.com](https://www.saucedemo.com). The first `get` method locates the div in blue below, where the other elements are found.
 
-![assets/TRT1.04B.png]
+![Swag Labs Login](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04B.png)
 
 <img src="assets/TRT1.04B.png" alt="Login Page elements" width="850"/>
 
@@ -351,7 +351,7 @@ Sauce Labs has developed a set of tools in conjunction with saucectl to enable t
 
 This is a testing solution for developers that simplifies user setup, speeds up test execution time, unifies test results, and supports new open source frameworks like Playwright, Cypress, TestCafe, Espresson, and XCUI for running end-to-end web & mobile tests.
 
-![assets/TRT1.02A.png]
+![Whats Included](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.02A.png)
 
 ### 5.1 Install saucectl
 
@@ -365,7 +365,7 @@ It also allows you to run commands to run tests locally or remotely on the Sauce
 
 First, open up the terminal, by clicking on the bottom left part of the Visual Studio Editor
 
-![https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/open_terminal.png]
+![Open Terminal in VS Code](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/open_terminal.png)
 
 First, anywhere on your machine (in Terminal) install the saucectl tool globally, using this command `npm` to install the Saucectl package:
 
@@ -377,7 +377,7 @@ You can access your Sauce Username and Access Key on the Sauce Labs Platform
 
 Visit [https://accounts.saucelabs.com](https://accounts.saucelabs.com/am/XUI/#login/?utm_source=referral&utm_medium=LMS&utm_campaign=link). You can create a free trial account if you haven’t been assigned one.
 
-![assets/TRT4.05A.png]
+![Sauce Labs Login](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT4.05A.png)
 
 Go to **Account> User Settings** to find your username and access key.
 
@@ -580,7 +580,7 @@ saucectl run
 You can now visit
 [app.saucelabs.com](https://app.saucelabs.com/dashboard/tests/vdc) and go to the **Automated > Test Results** dashboard.
 
-![https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/test-dashboard.png]
+![sauce labs dashboard](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/test-dashboard.png)
 
 ### 6.2 Specify Which Tests
 
