@@ -71,7 +71,7 @@ First, you will need to add information for your tests about the URL of the app 
 
 ```
 {
- "baseUrl": "https://www.saucedemo.com"
+ "baseUrl": "https://www.saucedemo.com/v1/"
 }
 ```
 
@@ -579,11 +579,11 @@ saucectl run
 
 You can now visit
 [app.saucelabs.com](https://app.saucelabs.com/dashboard/tests/vdc) and go to the **Automated > Test Results** dashboard.
-![assets/test-dashboard.png]
+![https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/test-dashboard.png]
 
 ### 6.2 Specify Which Tests
 
-right now, if you look in config yml, you should see a set of code that looks like this:
+Right now, if you look in `config yml`, you should see a set of code that looks like this near the bottom:
 
 ```
 suites:
