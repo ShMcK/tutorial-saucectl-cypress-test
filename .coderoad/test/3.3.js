@@ -76,5 +76,23 @@ describe("LoginPage.js", function () {
         }
     });
 
+    // 3.4
+    it("signIn method is not working", () => {
+        try {
+            const fakeUser = {
+                username: null,
+                password: null,
+            };
+            // const LoginButtonStub = sinon.stub(LoginPage.loginButton, 'loginButton');
+            // console.log(LoginButtonStub);
+            LoginPage.signIn(fakeUser);
+
+            const btnAction = spy.calledWith(".btn_action");
+            expect(btnAction).to.be.ok;
+
+        } catch (error) {
+            throw ("Errors", error);
+        }
+    });
 });
 
