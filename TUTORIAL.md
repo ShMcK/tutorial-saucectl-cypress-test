@@ -349,7 +349,7 @@ This is a testing solution for developers that simplifies user setup, speeds up 
 
 `saucectl` stands for Sauce Control, the command line interface for running non-Selenium tests such a Cypress, TestCafe, Espresso, and XCUITest. The toolkit includes `saucectl` commands that allow you to interface with Sauce Labs, running hundreds of test in parallel on Sauce Labs Virtual Machines, making it easy to interpret, share, and analyze those test results.
 
-First you need to download and install the Sauce Control Command Line Interface (CLI) that you will use to run Sauce Labs. T
+First you need to download and install the Sauce Control Command Line Interface (CLI) that you will use to run Sauce Labs. 
 
 This is a part of the Sauce Labs set of tools that allows you to set a configuration location & update the file in your local directory.  
 
@@ -363,10 +363,10 @@ First, anywhere on your machine (in Terminal) install the saucectl tool globally
 
 You can access your Sauce Username and Access Key on the Sauce Labs Platform
 
-Visit [ttps://accounts.saucelabs.com](https://accounts.saucelabs.com/am/XUI/#login/?utm_source=referral&utm_medium=LMS&utm_campaign=link). You can create a free trial account if you haven’t been assigned one.
+Visit [https://accounts.saucelabs.com](https://accounts.saucelabs.com/am/XUI/#login/?utm_source=referral&utm_medium=LMS&utm_campaign=link). You can create a free trial account if you haven’t been assigned one.
 
 ![assets/TRT4.05A.png]
-s
+
 Go to **Account> User Settings** to find your username and access key.
 
 
