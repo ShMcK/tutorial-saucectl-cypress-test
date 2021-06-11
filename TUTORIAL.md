@@ -37,7 +37,7 @@ Take a look at the project structure on the right. Open the `/cypress` directory
 
 
 ## 2. Test File Overview
-If you look in your project file, you should also notice a `cypress.json` file alongside the `/cypress` directroy. This is a configuration file for your cypress test code project.
+If you look in your project file, you should also notice a `cypress.json` file alongside the `/cypress` directory. This is a configuration file for your cypress test code project.
 
 This file is used to set [all kinds of options for your Cypress test](https://docs.cypress.io/guides/references/configuration.html).
 
@@ -50,7 +50,7 @@ It's important to keep the tests in this directory as you will need tests to be 
 
 Notice there is just one test object in this directory, called `login.spec.js`. This will contain the code that runs the `it()` statements that will test the functionality of the [login flow](https://www.saucedemo.com/).
 
-**1.4 The Pageobjects Directory**
+**The Pageobjects Directory**
 Open up the pageobjects directory and notice there are two files:
 * `LoginPage.js` – Code for interacting with the [Swag Labs login page]()
 * `SwagOverviewPage.js` – Code for interacting with the [next page, where you can choose swag]()
@@ -71,16 +71,16 @@ Inside your project file that you created, you will notice the cypress.json file
 
 First, you will need to add information for your tests about the URL of the app you are testing against. Add the following line to `cypress.json`, which you will use in your tests to pull in the site you are testing against.
 
-```
+```json
 {
- "baseUrl": "https://www.saucedemo.com"
+ "baseUrl": "https://www.saucedemo.com/v1/"
 }
 ```
 
 #### HINTS
-- This code should be inside cypress.json 
+- This code should be inside cypress.json
 
-### 3.2 Add Credenitals in constants.js
+### 3.2 Add Credentials in constants.js
 
 Next, in the `cypress/support` directory find a file called `constants.js`.
 
@@ -88,33 +88,33 @@ It’s good practice to store sensitive information like a username and a passwo
 
 Open `constants.js` and create the `const` to store different login credentials:
 
-```
+```js
 export const LOGIN_USERS = {
 };
 ```
 
 Next, inside of `LOGIN_USERS` add in credentials for a user that is locked out of Swag Labs:
 
-```
+```js
 LOCKED: {
-       username: 'locked_out_user',
-       password: 'secret_sauce',
-   },
+    username: 'locked_out_user',
+    password: 'secret_sauce',
+},
 ```
 
  Last, add user credentials inside of `LOGIN_USERS` that will allow you to login:
 
- ```
- STANDARD: {
-       username: 'standard_user',
-       password: 'secret_sauce',
-   },
+ ```js
+STANDARD: {
+    username: 'standard_user',
+    password: 'secret_sauce',
+},
  ```
 
 Now you can use these objects to login in your tests by calling `LOGIN_USERS.LOCKED` or `LOGIN_USERS.STANDARD`.
 #### HINTS
 - Final code should look like:
-```
+```js
 // filename: cypress/support/constants.js
 export const LOGIN_USERS = {
    LOCKED: {
@@ -129,12 +129,12 @@ export const LOGIN_USERS = {
 ```
 
 ### 3.3 Locate Items on the Login Page
-pen the `pageobjects` directory and add a file named: `LoginPage.js`, then open `LoginPage.js` and add the following:
+Open the `pageobjects` directory and add a file named: `LoginPage.js`, then open `LoginPage.js` and add the following:
 
 
 In `LoginPage.js` you will create several get methods to locate elements on the page you will use in your test later on:
 
-```
+```js
 class LoginPage {
    get screen() {
        return cy.get('#login_button_container');
@@ -157,12 +157,12 @@ class LoginPage {
    }
 
 }
+
+export default new LoginPage();
 ```
 Since you have baseUrl specified in `cypress.json`, your tests know to visit [https://www.saucedemo.com](https://www.saucedemo.com). The first `get` method locates the div in blue below, where the other elements are found.
 
-![assets/TRT1.04B.png]
-
-<img src="assets/TRT1.04B.png" alt="Login Page elements" width="850"/>
+<img src="https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04B.png" alt="Login Page elements" width="850"/>
 
 You can also see the ids, classes, and `data-test` element that your tests’ `get` methods use to locate other elements on the page.
 
@@ -170,10 +170,11 @@ You can also see the ids, classes, and `data-test` element that your tests’ `g
 
 Next, below the get methods, add in the code to create your `signIn method`, and export the` LoginPage` class so it can be used by other classes (your test methods).
 
-```
+```js
 // filename: cypress/pageobjects/LoginPage.js
-// ...
+class LoginPage {
 
+    // ...
 
    signIn(userDetails) {
        const {password, username} = userDetails;
@@ -188,9 +189,6 @@ Next, below the get methods, add in the code to create your `signIn method`, and
        this.loginButton.click();
    }
 }
-
-export default new LoginPage();
-
 ```
 
 If you recall, in `const.js` there is a constant created called `LOGIN_USERS `which contains two objects, either `LOCKED` or `STANDARD`.
@@ -201,7 +199,7 @@ Later, when you call that method in your test, you will pass in the set of usern
 
 #### HINTS
 - The final `LoginPage.js` should looks like this:
-```
+```js
 class LoginPage {
    get screen() {
        return cy.get('#login_button_container');
@@ -235,27 +233,25 @@ class LoginPage {
        this.loginButton.click();
    }
 }
-
-export default new LoginPage();
 ```
 ### 3.5 Create Inventory Page Object
 The page that you enter after you enter login credentials also needs to be accessed. This is known as the _Inventory_ or _Swag Labs_ page.
 
-![assets/TRT1.04C.png]
+![Swag Overview Page](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.04C.png)
 
 Open `SwagOverviewPage.js` and copy in the following code:
 
-```
+```js
 get screen() {
-        return cy.get('.inventory_list');
-    }
+    return cy.get('.inventory_list');
+}
 ```
 
  This will go to the sauce demo page that lists the products, and search for the div that contains the list of items with an id of `inventory_list`.
 
  #### HINTS
  - Your `SwagOverviewPage.js` file should look like this:
- ```
+ ```js
 //filename: cypress/pageobjects/SwagOverviewPage.js
 class SwagOverviewPage {
     get screen() {
@@ -276,11 +272,12 @@ In the `cypress/integration `directory, find the file named `login.spec.js`. In 
 
 Open `login.spec.js` and take a look at the `describe()` method to set up your test. The `cy.visit() `method contains an empty string because it will automatically pull the `baseUrl `from the `cypress.json` file:
 
-```
+```js
 describe('LoginPage', () => {
    beforeEach(() => {
        cy.visit('');
    });
+});
 ```
 
 ### 4.1 Add Your First It Assertion - Login Page
@@ -291,18 +288,17 @@ Add in an `it()` method, which is a Mocha/ Cypress standard for declaring test m
 
 You can add this method right after the `before()` method:
 
-```
+```js
 it('should be able to test loading of login page', () => {
-       LoginPage.screen.should('be.visible');
-   });
+    LoginPage.screen.should('be.visible');
+});
 ```
 ### 4.2 Second It Assertion – Inventory Page
 
 Next, add a test to check that the next page (where you can choose items for your cart.) is visible when you log in with valid user credentials:
 
 
-```
-
+```js
    it('should be able to login with a standard user', () => {
        LoginPage.signIn(LOGIN_USERS.STANDARD);
        SwagOverviewPage.screen.should('be.visible');
@@ -311,7 +307,7 @@ Next, add a test to check that the next page (where you can choose items for you
 
 #### HINTS
 - The final code for your login test should look like this:
-```
+```js
 import LoginPage from '../pageobjects/LoginPage';
 import SwagOverviewPage from '../pageobjects/SwagOverviewPage';
 import { LOGIN_USERS } from '../support/constants';
@@ -334,7 +330,8 @@ describe('LoginPage', () => {
        LoginPage.signIn(LOGIN_USERS.LOCKED);
        LoginPage.errorMessage.should('have.text','Epic sadface: Sorry, this user has been locked out.');
    });
-   ```
+});
+```
 
 ## 5. Introduction to saucectl & the Sauce Labs Platform 
 
@@ -344,7 +341,7 @@ Sauce Labs has developed a set of tools in conjunction with saucectl to enable t
 
 This is a testing solution for developers that simplifies user setup, speeds up test execution time, unifies test results, and supports new open source frameworks like Playwright, Cypress, TestCafe, Espresson, and XCUI for running end-to-end web & mobile tests.
 
-![assets/TRT1.02A.png]
+![Test Runner Toolkit](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT1.02A.png)
 
 ### 5.1 Install saucectl
 
@@ -358,7 +355,9 @@ It also allows you to run commands to run tests locally or remotely on the Sauce
 
 First, anywhere on your machine (in Terminal) install the saucectl tool globally, using this command `npm` to install the Saucectl package:
 
-`npm i -g saucectl`
+```shell
+npm i -g saucectl
+```
 
 ### 5.2 Set Sauce Username and Access Key
 
@@ -366,14 +365,14 @@ You can access your Sauce Username and Access Key on the Sauce Labs Platform
 
 Visit [https://accounts.saucelabs.com](https://accounts.saucelabs.com/am/XUI/#login/?utm_source=referral&utm_medium=LMS&utm_campaign=link). You can create a free trial account if you haven’t been assigned one.
 
-![assets/TRT4.05A.png]
+![Testrunner Toolkit](https://raw.githubusercontent.com/ShMcK/tutorial-saucectl-cypress-test/master/assets/TRT4.05A.png)
 
 Go to **Account> User Settings** to find your username and access key.
 
 
 When you run this command in terminal, saucectl will detect your `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`, but you can run the following optional command to edit these:
 
-```
+```shell
 saucectl configure
 ```
 
@@ -385,26 +384,27 @@ Now you need to set up the basic files for your project. The first thing you nee
 
 In terminal, create a new (hidden) folder with the command inside your project directory (this should be at the same level as your `/cypress` `cypress.json`):
 
-```
+```shell
 touch .sauce
 ```
 
 Navigate insde of this directory in terminal:
 
-```
+```shell
 cd .sauce
 ```
 Next, create the configuration file which will contain instructions for how to run your Cypress tests with saucectl:
 
-```
+```shell
 touch config.yml
 ```
 
 Now, open the `config.yml` file and copy-paste the following. Updated versions of this can be found in the ([config Docs](https://docs.saucelabs.com/testrunner-toolkit/configuration#basic-configuration)):
 
 
-```
-# filename: .sauce/config.yml
+// filename: .sauce/config.yml
+
+```yaml
 apiVersion: v1alpha
 kind: cypress
 defaults:
@@ -444,7 +444,7 @@ artifacts:
 
 #### HINTS
 - The project file should now look like this:
-```
+```text
 cypress-test-project
     |
 	cypress.json
@@ -463,7 +463,7 @@ cypress-test-project
 ```
 
 - The `.sauce/config.yml` file has:
-```
+```yaml
 apiVersion: v1alpha
 kind: cypress
 defaults:
@@ -500,13 +500,13 @@ artifacts:
     directory: ./artifacts/
 ```
 
-### 5.3 Add a .sauceignore
+### 5.4 Add a .sauceignore
 
 The last file you will need to create is the `.sauceignore` file, which allows you to avoid uploading unnecessary files that are included in your project.
 
 Create the `.sauceignore` file in the root of your project:
 
-```
+```shell
 touch .sauceignore
 ```
 
@@ -514,7 +514,7 @@ The reason for a file like this is so that you can avoid uploading assets or oth
 
 Next, we will want to add something to your `.sauceignore` file. Open this newly created file and add in the following:
 
-```
+```text
 cypress/videos/
 cypress/results/
 cypress/screenshots/
@@ -524,13 +524,13 @@ node_modules/
 .DS_Store
 __assets__
 **/__assets__
-````
+```
 
 These are several common files you may have included with your project that you don't want stored on Sauce Labs (It will take longer for your tests to run if you upload these), and they aren't necessary for your test suites.
 
 #### HINTS
 - The project file should now look like this:
-```
+```text
 cypress-test-project
     |
 	cypress.json

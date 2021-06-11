@@ -21,58 +21,76 @@ config:
 levels:
   - id: '1'
   - id: '2'
-    steps:
-      - id: '2.1'
-        setup:
-          files:
-            - cypress.json
-        solution:
-          files:
-            - cypress.json
   - id: '3'
     steps:
       - id: '3.1'
         setup:
           files:
+            - cypress.json
+        solution:
+          files:
+            - cypress.json
+      - id: '3.2'
+        setup:
+          files:
             - cypress/support/constants.js
         solution:
           files:
             - cypress/support/constants.js
+      - id: '3.3'
+        setup:
+          files:
+            - cypress/pageobjects/LoginPage.js
+        solution:
+          files:
+            - cypress/pageobjects/LoginPage.js
+      - id: '3.4'
+        setup:
+          files:
+            - cypress/pageobjects/LoginPage.js
+        solution:
+          files:
+            - cypress/pageobjects/LoginPage.js
+      - id: '3.5'
+        setup:
+          files:
+            - cypress/pageobjects/SwagOverviewPage.js
+        solution:
+          files:
+            - cypress/pageobjects/SwagOverviewPage.js
   - id: '4'
     steps:
-    - id: '4.1'
-      setup:
-        files:
-          - cypress/pageobjects/LoginPage.js
-      solution:
-        files:
-          - cypress/pageobjects/LoginPage.js
+      - id: '4.1'
+        setup:
+          files:
+            - cypress/integration/login.spec.js
+        solution:
+          files:
+            - cypress/integration/login.spec.js
+      - id: '4.2'
+        setup:
+          files:
+            - cypress/integration/login.spec.js
+        solution:
+          files:
+            - cypress/integration/login.spec.js
+    
   - id: '5'
-    steps:
-      - id: '5.1'
-        setup:
-          files:
-            - cypress/pageobjects/SwagOverviewPage.js
-        solution:
-          files:
-            - cypress/pageobjects/SwagOverviewPage.js
+    # steps:
+    #   - id: '5.1'
+    #     setup:
+    #       files:
+    #         - cypress/pageobjects/SwagOverviewPage.js
+    #     solution:
+    #       files:
+    #         - cypress/pageobjects/SwagOverviewPage.js
   - id: '6'
-    steps:
-      - id: '6.1'
-        setup:
-          files:
-            - cypress/integration/login.spec.js
-        solution:
-          files:
-            - cypress/integration/login.spec.js
-  - id: '7'
-  - id: '8'
-    steps:
-      - id: '8.1'
-      - id: '8.2'
-      - id: '8.3'
-  - id: '9'
-    steps:
-      - id: '9.1'
-      - id: '9.2'
-  - id: '10'
+    # steps:
+    #   - id: '6.1'
+    #     setup:
+    #       files:
+    #         - cypress/integration/login.spec.js
+    #     solution:
+    #       files:
+    #         - cypress/integration/login.spec.js
+  
