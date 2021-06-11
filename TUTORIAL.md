@@ -523,7 +523,7 @@ node_modules/
 .DS_Store
 __assets__
 **/__assets__
-````
+```
 
 These are several common files you may have included with your project that you don't want stored on Sauce Labs (It will take longer for your tests to run if you upload these), and they aren't necessary for your test suites.
 
