@@ -20,6 +20,18 @@ class LoginPage {
         return cy.get('[data-test="error"]');
     }
 
+    signIn(userDetails) {
+        const { password, username } = userDetails;
+
+        if (username) {
+            this.username.type(username);
+        }
+        if (password) {
+            this.password.type(password);
+        }
+
+        this.loginButton.click();
+    }
 }
 
 export default new LoginPage();
