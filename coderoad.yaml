@@ -59,7 +59,21 @@ levels:
           files:
             - cypress/pageobjects/SwagOverviewPage.js
   - id: '4'
-    # steps:
+    steps:
+      - id: '4.1'
+        setup:
+          files:
+            - cypress/integration/login.spec.js
+        solution:
+          files:
+            - cypress/integration/login.spec.js
+      - id: '4.2'
+        setup:
+          files:
+            - cypress/integration/login.spec.js
+        solution:
+          files:
+            - cypress/integration/login.spec.js
     
   - id: '5'
     # steps:
