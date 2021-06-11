@@ -402,8 +402,9 @@ touch config.yml
 Now, open the `config.yml` file and copy-paste the following. Updated versions of this can be found in the ([config Docs](https://docs.saucelabs.com/testrunner-toolkit/configuration#basic-configuration)):
 
 
+// filename: .sauce/config.yml
+
 ```
-# filename: .sauce/config.yml
 apiVersion: v1alpha
 kind: cypress
 defaults:
